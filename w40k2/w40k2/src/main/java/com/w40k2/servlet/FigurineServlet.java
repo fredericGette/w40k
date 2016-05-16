@@ -6,6 +6,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.w40k2.dao.MyHibernate;
+import com.w40k2.model.Role;
+
 /**
  * Servlet implementation class FigurineServlet
  */
@@ -26,6 +32,12 @@ public class FigurineServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		SessionFactory sf = MyHibernate.INSTANCE.getSessionFactory();
+		Session session = sf.openSession();
+		session.beginTransaction();
+		session.save( new Role("Big Mek") );
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	/**
