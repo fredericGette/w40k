@@ -25,7 +25,8 @@ public class Figurine {
 	private Role role;
 	
 	@ManyToMany
-	@JoinTable(name="figurine_roles",
+	@JoinTable(
+		name="figurine_roles",
 		joinColumns=@JoinColumn(name="figurine", referencedColumnName="id"),
 	    inverseJoinColumns=@JoinColumn(name="role", referencedColumnName="id")
 	)
