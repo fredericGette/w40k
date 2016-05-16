@@ -1,5 +1,6 @@
 package com.w40k2.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,17 +20,19 @@ public class Figurine {
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "default_role")
+	@ManyToOne
+	@JoinColumn(name = "default_role")
 	private Role default_role;
 	
-	@Column(name = "role")
+	@ManyToOne
+	@JoinColumn(name = "role")
 	private Role role;
 	
 	@ManyToMany
 	@JoinTable(
 		name="figurine_roles",
-		joinColumns=@JoinColumn(name="figurine", referencedColumnName="id"),
-	    inverseJoinColumns=@JoinColumn(name="role", referencedColumnName="id")
+		joinColumns=@JoinColumn(name="figurine_id", referencedColumnName="id"),
+	    inverseJoinColumns=@JoinColumn(name="role_id", referencedColumnName="id")
 	)
 	private Set<Role> possibleRoles;
 
@@ -69,4 +73,10 @@ public class Figurine {
 		this.possibleRoles = possibleRoles;
 	}
 	
+	public void addPossibleRole(Role role)  {
+		if (this.possibleRoles == null) {
+			this.possibleRoles = new HashSet<Role>();
+		}
+		this.possibleRoles.add(role);
+	}
 }

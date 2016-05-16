@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.w40k2.dao.MyHibernate;
+import com.w40k2.model.Figurine;
 import com.w40k2.model.Role;
 
 /**
@@ -32,10 +33,18 @@ public class FigurineServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		Role role = new Role("Big Mek");
+		Figurine figurine = new Figurine();
+		figurine.setDefault_role(role);
+		figurine.setRole(role);
+		figurine.addPossibleRole(role);
+		
 		SessionFactory sf = MyHibernate.INSTANCE.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.save( new Role("Big Mek") );
+		session.save(role);
+		session.save(figurine);
 		session.getTransaction().commit();
 		session.close();
 	}

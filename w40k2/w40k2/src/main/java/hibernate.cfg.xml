@@ -12,6 +12,9 @@
 		<property name="hibernate.connection.username">test1</property>
 		<property name="hibernate.connection.password">test1</property>
 		
+		<property name="hibernate.show_sql">true</property>
+		
 		<mapping class="com.w40k2.model.Role"/>
+		<mapping class="com.w40k2.model.Figurine"/>
 	</session-factory>
 </hibernate-configuration>
