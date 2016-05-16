@@ -1,8 +1,13 @@
 package com.w40k2.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +23,13 @@ public class Figurine {
 	
 	@Column(name = "role")
 	private Role role;
+	
+	@ManyToMany
+	@JoinTable(name="figurine_roles",
+		joinColumns=@JoinColumn(name="figurine", referencedColumnName="id"),
+	    inverseJoinColumns=@JoinColumn(name="role", referencedColumnName="id")
+	)
+	private Set<Role> possibleRoles;
 
 	public Figurine() {
 		super();
@@ -47,7 +59,13 @@ public class Figurine {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
-	
+
+	public Set<Role> getPossibleRoles() {
+		return possibleRoles;
+	}
+
+	public void setPossibleRoles(Set<Role> possibleRoles) {
+		this.possibleRoles = possibleRoles;
+	}
 	
 }
