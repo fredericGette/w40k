@@ -5,11 +5,14 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +20,10 @@ import javax.persistence.Table;
 public class Figurine {
 
 	@Id
+	@SequenceGenerator(name="figurine_pk_sequence",sequenceName="figurine_id_seq",allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="figurine_pk_sequence")
 	@Column(name = "id")
-	private int id;
+	private long id;
 	
 	@ManyToOne
 	@JoinColumn(name = "default_role")
@@ -40,7 +45,7 @@ public class Figurine {
 		super();
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -53,7 +58,7 @@ public class Figurine {
 	}
 
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

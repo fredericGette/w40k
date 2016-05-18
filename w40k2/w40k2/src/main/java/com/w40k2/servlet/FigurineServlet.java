@@ -34,17 +34,28 @@ public class FigurineServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		Role role = new Role("Big Mek");
-		Figurine figurine = new Figurine();
-		figurine.setDefault_role(role);
-		figurine.setRole(role);
-		figurine.addPossibleRole(role);
+		Role role1 = new Role("Big Mek");
+		Role role2 = new Role("Big Boss");
+		
+		Figurine figurine1 = new Figurine();
+		figurine1.setDefault_role(role1);
+		figurine1.setRole(role1);
+		figurine1.addPossibleRole(role1);
+		figurine1.addPossibleRole(role2);
+
+		Figurine figurine2 = new Figurine();
+		figurine2.setDefault_role(role2);
+		figurine2.setRole(role2);
+		figurine2.addPossibleRole(role2);
+
 		
 		SessionFactory sf = MyHibernate.INSTANCE.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.save(role);
-		session.save(figurine);
+		session.save(role1);
+		session.save(role2);
+		session.save(figurine1);
+		session.save(figurine2);
 		session.getTransaction().commit();
 		session.close();
 	}
