@@ -14,7 +14,7 @@
 		
 		<property name="hibernate.show_sql">true</property>
 		
-		<mapping class="com.w40k2.model.Role"/>
-		<mapping class="com.w40k2.model.Figurine"/>
+		<mapping class="com.w40k2.dao.entity.Role"/>
+		<mapping class="com.w40k2.dao.entity.Figurine"/>
 	</session-factory>
 </hibernate-configuration>

@@ -10,8 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.w40k2.dao.MyHibernate;
-import com.w40k2.model.Figurine;
-import com.w40k2.model.Role;
+import com.w40k2.dao.entity.Figurine;
+import com.w40k2.dao.entity.Role;
 
 /**
  * Servlet implementation class FigurineServlet

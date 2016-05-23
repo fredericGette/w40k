@@ -1,4 +1,4 @@
-package com.w40k2.model;
+package com.w40k2.dao.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
