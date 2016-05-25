@@ -3,15 +3,20 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>FigurineServlet</servlet-name>
-  	<display-name>FigurineServlet</display-name>
-  	<description></description>
-  	<servlet-class>com.w40k2.servlet.FigurineServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>FigurineServlet</servlet-name>
-  	<url-pattern>/figurine</url-pattern>
-  </servlet-mapping>
+	<display-name>Archetype Created Web Application</display-name>
+
+	<filter>
+		<filter-name>guiceFilter</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>guiceFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>com.w40k2.servlet.MyGuiceServletConfig</listener-class>
+	</listener>
+
 </web-app>

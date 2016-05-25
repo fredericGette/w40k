@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.google.inject.Singleton;
 import com.w40k2.dao.MyHibernate;
 import com.w40k2.dao.entity.Figurine;
 import com.w40k2.dao.entity.Role;
@@ -16,6 +17,7 @@ import com.w40k2.dao.entity.Role;
 /**
  * Servlet implementation class FigurineServlet
  */
+@Singleton
 public class FigurineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
