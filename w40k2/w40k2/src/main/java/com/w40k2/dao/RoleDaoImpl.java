@@ -3,44 +3,45 @@ package com.w40k2.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.w40k2.dao.entity.Figurine;
+import com.w40k2.dao.entity.Role;
 
-public class FigurineDaoImpl implements FigurineDao {
+public class RoleDaoImpl implements RoleDao {
 
-	public void create(Figurine figurine) {
+	@Override
+	public void create(Role role) {
 		SessionFactory sf = MyHibernate.INSTANCE.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.persist(figurine);
+		session.persist(role);
 		session.getTransaction().commit();
 		session.close();
 	}
 
 	@Override
-	public Figurine read(long figurineId) {
+	public Role read(String roleId) {
 		SessionFactory sf = MyHibernate.INSTANCE.getSessionFactory();
 		Session session = sf.openSession();
-		return session.get(Figurine.class, figurineId);
+		return session.get(Role.class, roleId);
 	}
 
 	@Override
-	public void update(Figurine figurine) {
+	public void update(Role role) {
 		SessionFactory sf = MyHibernate.INSTANCE.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.update(figurine);
+		session.update(role);
 		session.getTransaction().commit();
 		session.close();
-		
 	}
 
 	@Override
-	public void delete(Figurine figurine) {
+	public void delete(Role role) {
 		SessionFactory sf = MyHibernate.INSTANCE.getSessionFactory();
 		Session session = sf.openSession();
 		session.beginTransaction();
-		session.delete(figurine);
+		session.delete(role);
 		session.getTransaction().commit();
 		session.close();
 	}
+
 }
